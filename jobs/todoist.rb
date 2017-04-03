@@ -1,10 +1,10 @@
 require "net/http"
 require "json"
 
-todoist_token = 'd2ebd14d799ec7565b18aa22b818fca49d6649b5'
+todoist_token = ''
 
 SCHEDULER.every '5m', :first_in => 0 do |job|
-    item_url_string  = 'https://todoist.com/API/v7/sync?token=d2ebd14d799ec7565b18aa22b818fca49d6649b5&resource_types=["items"]&sync_token=\'*\''
+    item_url_string  = 'https://todoist.com/API/v7/sync?token=${todoist_token}&resource_types=["items"]&sync_token=\'*\''
     encoded_item_url_string = URI.encode(item_url_string)
 
     item_uri = URI.parse(encoded_item_url_string)
